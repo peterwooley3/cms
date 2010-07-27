@@ -14,7 +14,11 @@
 					.attr('type','text')
 					.val($(this).text())
 					.insertAfter(this)
-					.dblclick(function() {
+					.dblclick(function() {					
+						$.post('index.php/home/update', {'content': $(this).val()}, function() {
+							console.log("Update returned successfully.");
+						});
+					
 						$('p')
 							.text($(this).val())
 							.show();
@@ -26,6 +30,24 @@
 	</head>
 	<body>
 		<h1>Welcome to CodeIgniter!</h1>
-		<p>Page rendered in {elapsed_time} seconds</p>
+		<p><?php echo $content; ?></p>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
